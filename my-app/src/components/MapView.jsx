@@ -36,7 +36,7 @@ function RasterLayer({ year, onStatsReady }) {
       }
 
       try {
-        const tiff = await GeoTIFF.fromUrl(`/data/lc_${year}.tif`);
+        const tiff = await GeoTIFF.fromUrl(`${import.meta.env.BASE_URL}data/lc_${year}.tif`);
         const image = await tiff.getImage();
         const rasters = await image.readRasters();
         const [values] = rasters;
