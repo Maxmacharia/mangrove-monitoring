@@ -8,14 +8,12 @@ const CLASS_COLORS = {
   1: '#2ca02c',   // Mangrove forest
   2: '#8c564b',   // Bare Land
   3: '#1f77b4',   // Water
-  4: '#d62728',   // Prosopis
 };
 
 const CLASS_NAMES = {
   1: 'Mangrove forest',
   2: 'Bare Land',
   3: 'Water',
-  4: 'Prosopis',
 };
 
 function RasterLayer({ year, onStatsReady }) {
