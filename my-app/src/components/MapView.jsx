@@ -146,7 +146,7 @@ function LegendControl({ year }) {
 
       Object.entries(CLASS_COLORS).forEach(([key, color]) => {
         const k = parseInt(key);
-        if (k === 4 || k === 5 && !(year === 2025)) return;
+        if ((k === 4 || k === 5) && !(year === 2025)) return;
         const label = CLASS_NAMES[k];
         div.innerHTML += `
           <div style="margin-bottom: 4px;">
