@@ -13,13 +13,15 @@ const CLASS_LABELS = {
   2: 'Bare Land',
   3: 'Water',
   4: 'Prosopis',
+  5: 'Mixed Vegetation',
 };
 
 const CLASS_COLORS = {
   'Mangrove Forest': '#2ca02c',
   'Bare Land': '#8c564b',
   'Water': '#1f77b4',
-  'Prosopis': '#d62728',
+  'Prosopis': '#ffef00',
+  'Mixed Vegetation': '#b22222',
 };
 
 function AreaChart({ statsByYear }) {

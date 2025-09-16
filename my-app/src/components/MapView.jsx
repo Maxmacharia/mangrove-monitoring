@@ -8,12 +8,16 @@ const CLASS_COLORS = {
   1: '#2ca02c',   // Mangrove forest
   2: '#8c564b',   // Bare Land
   3: '#1f77b4',   // Water
+  4: '#f6e337',   // Prosopis
+  5: '#b22222',   // Mixed vegetation
 };
 
 const CLASS_NAMES = {
-  1: 'Mangrove forest',
+  1: 'Mangrove Forest',
   2: 'Bare Land',
   3: 'Water',
+  4: 'Prosopis',
+  5: 'Mixed Vegetation',
 };
 
 function RasterLayer({ year, onStatsReady }) {
@@ -142,7 +146,7 @@ function LegendControl({ year }) {
 
       Object.entries(CLASS_COLORS).forEach(([key, color]) => {
         const k = parseInt(key);
-        if (k === 4 && !(year === 2022 || year === 2025)) return;
+        if (k === 4 || k === 5 && !(year === 2025)) return;
         const label = CLASS_NAMES[k];
         div.innerHTML += `
           <div style="margin-bottom: 4px;">

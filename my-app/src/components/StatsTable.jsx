@@ -3,6 +3,7 @@ const CLASS_LABELS = {
   2: 'Bare Land',
   3: 'Water',
   4: 'Prosopis',
+  5: 'Mixed Vegetation',
 };
 
 function StatsTable({ stats }) {
