@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css';
 
 const CLASS_COLORS = {
   1: '#2ca02c',   // Mangrove forest
-  2: '#8c564b',   // Bare Land
+  2: '#808080',   // Bare Land
   3: '#1f77b4',   // Water
   4: '#f6e337',   // Prosopis
   5: '#b22222',   // Mixed vegetation
