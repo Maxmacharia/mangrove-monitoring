@@ -9,6 +9,8 @@ const CLASS_LABELS = {
 function StatsTable({ stats }) {
   if (!stats) return <div className="text-gray-500">Click year of preference to visualize</div>;
 
+  const totalPercent = stats.reduce((sum, s) => sum + parseFloat(s.percent || 0), 0);
+
   return (
     <div className="overflow-x-auto rounded-lg border border-gray-200 p-4 bg-white shadow-md">
       <h2 className="text-lg font-semibold mb-2">Coverage Table</h2>

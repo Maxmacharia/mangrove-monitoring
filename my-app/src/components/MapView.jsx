@@ -31,7 +31,6 @@ function RasterLayer({ year, onStatsReady }) {
     let cancelled = false;
 
     const loadRaster = async () => {
-      // Remove previously added layer (if exists)
       if (rasterLayerRef.current.layer) {
         map.removeLayer(rasterLayerRef.current.layer);
         rasterLayerRef.current.layer = null;
@@ -54,17 +53,19 @@ function RasterLayer({ year, onStatsReady }) {
 
         // Stats calculation
         const classCounts = {};
+        let classifiedPixelCount = 0;
+
         values.forEach(v => {
-          if (v === 0) return;
+          if (v === 0) return; // skip background
           classCounts[v] = (classCounts[v] || 0) + 1;
+          classifiedPixelCount++;
         });
 
-        const totalPixels = width * height;
         const pixelArea = Math.abs(resX * resY);
         const stats = Object.entries(classCounts).map(([cls, count]) => ({
           class: parseInt(cls),
-          area: (count * pixelArea / 1e6).toFixed(2),
-          percent: ((count / totalPixels) * 100).toFixed(2),
+          area: (count * pixelArea / 1e6).toFixed(2), // km²
+          percent: ((count / classifiedPixelCount) * 100).toFixed(2), // now normalized
         }));
 
         if (!cancelled) onStatsReady(stats);
@@ -101,7 +102,6 @@ function RasterLayer({ year, onStatsReady }) {
           rasterLayerRef.current.layer = imageOverlay;
           lastLoadedYearRef.current = year;
 
-          // Fit map to image bounds only if not already contained
           if (!map.getBounds().contains(imageBounds)) {
             map.fitBounds(imageBounds, { padding: [20, 20], maxZoom: 16 });
           }
